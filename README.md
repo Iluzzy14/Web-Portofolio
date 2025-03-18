@@ -78,5 +78,7 @@ Proyek ini bertujuan untuk membuat sebuah website portofolio pribadi yang menamp
 │          ├── ...
 │── README.md            # Dokumentasi proyek
 ```
+## 3. Cara Hosting
+- **Link Domain**: https://web-portofolio-lovat-nine.vercel.app/
 
 ---
