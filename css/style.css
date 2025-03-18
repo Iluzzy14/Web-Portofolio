@@ -1,0 +1,885 @@
+/* Menyimpan variabel warna, shadow, dan transisi default. pada variable root css*/
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #f97316;
+    --dark-color: #1e293b;
+    --light-color: #f8fafc;
+    --gray-color: #94a3b8;
+    --footer-color: #334155;
+    --filter-btn: rgb(210, 210, 210);
+    --hero-shadow: rgba(0, 0, 0, 0.1);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-shadow: rgba(0, 0, 0, 0.1);
+    --accent-color: #2c68e9;
+    --form-color:white;
+    --home-bg-color:rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 0.7);
+    --transition: all 0.3s ease;
+    --hamburger-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Menyesuaikan warna untuk mode gelap. */
+[data-theme="dark"] {
+    --primary-color: #f97316;
+    --secondary-color: #2563eb;
+    --dark-color: #f8fafc;
+    --light-color: #1e293b;
+    --gray-color: #94a3b8;
+    --footer-color: rgb(235, 235, 235);
+    /* --filter-btn: rgb(255, 255, 255); */
+    --hero-shadow: rgba(255, 255, 255, 0.1);
+    --header-bg: rgba(0, 0, 0, 0.95);
+    --accent-color: #f97e27;
+    --form-color: black;
+    --header-shadow: rgba(255, 255, 255, 0.1);
+    --home-bg-color:rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.7);
+    --transition: all 0.3s ease;
+    --hamburger-shadow: rgba(255, 255, 255, 0.1);
+}
+
+/* Global Settings */
+/* Reset margin, padding, dan box-sizing untuk seluruh elemen. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mengatur font utama untuk elemen <body>. */
+body {
+    font-family: 'Poppins','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+/* Layout dan container */
+
+/* Mengatur lebar maksimum dan padding. */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    cursor: default;
+}
+
+/* Mengatur padding vertikal untuk setiap bagian utama. */
+.section {
+    padding: 80px 0;
+}
+
+/* Mengatur ukuran judul pada halaman */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+/* Tombol */
+/* Tombol dengan border, efek hover, dan transisi warna. */
+.btn{
+    display: inline-block;
+    padding: 12px 3rem;
+    background: transparent;
+    border-radius: 4rem;
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--primary-color);
+    transition: all 0.5s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn:hover{
+    color: var(--light-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Elemen <header> dibuat tetap (fixed) di bagian atas. */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--header-bg);
+    box-shadow: 0 6px 10px var(--header-shadow);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+/* .scrolled mengubah padding saat halaman di-scroll. */
+header.scrolled {
+    padding: 10px 0;
+}
+
+/* menagtur ukuran navigasi dan penempatan element */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+/* .nav-link untuk daftar tautan navigasi. */
+.nav-link{
+    display: flex;
+    list-style: none;
+}
+
+.nav-link li{
+    margin-left: 30px;
+}
+
+.nav-link a{
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-link a::after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link a:hover {
+    color: var(--primary-color);
+}
+
+.nav-link a:hover::after {
+    width: 100%;
+}
+
+/* Memberikan sebuah checkbox agar memiliki sebuah 
+tampilan berupa switch sehingga mudah dikenal menjadi dark mode switch */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 48px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: var(--light-color);
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--dark-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.theme-icon {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+/* Mengatur tulisan pada header bagian kiri */
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* hamburger button agar tidak muncul kecuali saat ukuran layar kecil */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-color);
+    margin: 5px;
+    transition: var(--transition);
+}
+
+/* Mengatur agar background seperti transparan dengan memberikan gambar yang di timpa dengan warna puting dengan opacity trasnparan */
+#home {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, var(--home-bg-color)), url(../Image/Herobcg.png) no-repeat center center/cover;;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+/* Mengubah ukuran tulisan dari h1 p serta memberikan warna yang berbeda pada span */
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content h1 span {
+    color: var(--primary-color);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--gray-color);
+}
+
+/* Gambar berbentuk lingkaran dengan ukuran 250px x 250px, border 5px --light-color, bayangan lembut, 
+serta diatur agar tetap proporsional dengan object-fit: cover. */
+.hero-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid var(--light-color);
+    box-shadow: 0 10px 20px var(--hero-shadow);
+    margin-top: 80px;
+    margin-bottom: 30px;
+    object-fit: cover;
+}
+
+.social-icons {
+    margin-top: 30px;
+}
+
+/* Ikon sosial media memiliki ukuran 1.5rem, warna --gray-color, 
+serta efek hover yang mengubah warna menjadi --primary-color dan menaikkan ikon sedikit. */
+.social-icons a {
+    display: inline-block;
+    margin-right: 20px;
+    color: var(--gray-color);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Mengubah warna latar halaman about*/
+#about {
+    background-color: var(--light-color);
+}
+
+/* Menggunakan grid dengan 2 kolom yang memiliki jarak 50px dan elemen disejajarkan secara vertikal. */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Mengatur font dan margin pada elemen h1 dan p */
+.about-text h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    color: var(--gray-color);
+}
+
+/* Memberikan margin atas 30px untuk pemisahan dari teks sebelumnya. */
+.skills {
+    margin-top: 30px;
+}
+
+.skill-item {
+    margin-bottom: 15px;
+}
+
+/* Menyusun nama skill dan persentase di sebelah kanan. */
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+/* Progress bar dengan tinggi 10px, warna latar abu-abu, serta border-radius 5px. */
+.skill-bar {
+    height: 10px;
+    background-color: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Warna --primary-color, border-radius 5px, dan tinggi penuh untuk menampilkan progres skill. */
+.skill-progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+}
+
+/* Memberikan margin atas 10px untuk pemisahan dari bagian sebelumnya. */
+.education-experience {
+    margin-top: 10px;
+}
+
+/*Posisi relatif dengan padding kiri 30px untuk tempat garis timeline. */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+/* Garis vertikal di sisi kiri, memiliki padding bawah 20px, dan garis berwarna --primary-color. */
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-left: 2px solid var(--primary-color);
+    padding-left: 20px;
+}
+
+/* Lingkaran kecil di setiap item timeline dengan warna --primary-color. */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+/* Mengubah ukuran font dan memberikan margin untuk tag h4 dan h5 di timelaine item */
+.timeline-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.timeline-item h5 {
+    font-size: 1rem;
+    color: var(--gray-color);
+    margin-bottom: 10px;
+}
+
+/* Latar belakang menggunakan --primary-color, warna teks putih,
+ teks dipusatkan, padding 25px 10px, dan cursor default. */
+.hero {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+    cursor: default;
+}
+
+.hero h1{
+    font-size: 3rem;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.portofolio-desc {
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Flexbox untuk menyusun tombol filter secara horizontal dengan gap 16px. */
+.portfolio-filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Padding 8px 24px, border-radius 30px, latar belakang --filter-btn, 
+serta efek hover dan aktif yang mengubah warna menjadi --primary-color. */
+.filter-btn {
+    padding: 8px 24px;
+    background-color: var(--filter-btn);
+    border: 1px solid var(--dark-color);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Grid dengan ukuran kolom fleksibel dan jarak antar item 32px. */
+.portofolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+/* Border-radius 10px, efek bayangan, serta efek hover yang menaikkan item. */
+.portofolio-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--hero-shadow);
+    transition: transform 0.3s ease;
+}
+
+.portofolio-item:hover {
+    transform: translateY(-10px);
+}
+
+/* Tinggi tetap 250px dan gambar diatur agar tidak terpotong. */
+.portofolio-img {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.portofolio-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Gambar akan diperbesar 1.1x saat hover. */
+.portofolio-item:hover .portofolio-img img{
+    transform: scale(1.1);
+}
+
+/* Padding 24px untuk informasi portfolio. */
+.portofolio-info {
+    padding: 24px;
+}
+
+.portofolio-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px
+}
+
+/* Link portofolio memiliki warna --dark-color, tebal, serta berubah warna menjadi --primary-color saat hover. */
+.portofolio-link {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.portofolio-link:hover {
+    color: var(--primary-color);
+}
+
+/* Contact Section */
+/* Memberikan padding atas dan bawah sebesar 80px untuk bagian kontak. */
+#contact-section {
+    padding: 80px 0;
+}
+
+/* Menggunakan flexbox untuk mengatur tata letak elemen, 
+memungkinkan elemen untuk membungkus ke baris berikutnya jika tidak cukup ruang, 
+serta menyusun elemen dengan jarak antar elemen sebesar 40px. */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Fleksibel dengan faktor 1 dari ruang yang tersedia dan memiliki lebar minimum 300px agar tetap responsif. */
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Fleksibel dengan faktor 2 dari ruang yang tersedia, memiliki lebar minimum 300px, 
+latar belakang menggunakan variabel --form-color, padding sebesar 30px, 
+border-radius 8px, serta efek bayangan ringan. */
+.contact-form {
+    flex: 2;
+    min-width: 300px;
+    background-color: var(--form-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Memberikan margin bawah sebesar 20px, menggunakan warna teks --dark-color, serta memiliki garis bawah dekoratif. */
+.contact-info h2, .contact-form h2 {
+    margin-bottom: 20px;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Garis bawah dekoratif dengan tinggi 3px, lebar 50px, dan warna menggunakan --primary-color. */
+.contact-info h2::after, .contact-form h2::after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background-color: var(--primary-color);
+}
+
+/* Menggunakan flexbox untuk menyusun ikon dan teks secara horizontal, 
+memberikan margin bawah 25px, serta ikon diatur agar sejajar di bagian atas teks. */
+.contact-info-item {
+    display: flex;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+/* Ukuran tetap 40px x 40px, latar belakang menggunakan --primary-color, 
+berbentuk lingkaran dengan border-radius: 50%, ikon ditempatkan di tengah dengan display: flex, 
+justify-content: center, dan align-items: center, serta warna ikon berwarna putih. */
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    color: white;
+}
+
+/* Ukuran font 18px dan memberikan margin bawah 5px untuk pemisahan dengan teks di bawahnya. */
+.contact-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+/* Warna teks menggunakan --gray-color. */
+.contact-text p {
+    font-size: 1.2rem;
+    color: var(--gray-color);
+}
+
+/* Memberikan margin bawah 20px untuk pemisahan antar elemen form. */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Ditampilkan sebagai blok agar tidak sejajar dengan elemen input, 
+memberikan margin bawah 8px, serta font diberi ketebalan lebih untuk penekanan. */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Lebar penuh, padding sebesar 12px untuk kenyamanan input, dan border berwarna --gray-color. */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--gray-color);
+}
+
+/* Menghilangkan outline default dan border berubah warna menjadi --primary-color untuk efek fokus. */
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Tinggi default 150px dan dapat diubah ukurannya hanya secara vertikal. */
+textarea.form-control {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Margin atas 50px untuk pemisahan dari elemen lain, lebar penuh dengan tinggi 400px, 
+border-radius sebesar 8px, dan overflow disembunyikan agar tampilan lebih rapi. */
+.map-container {
+    margin-top: 50px;
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    overflow:  hidden;
+}
+
+/* Lebar dan tinggi 100% agar sesuai dengan .map-container serta border dihilangkan untuk tampilan bersih. */
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Bagian ini mengatur tampilan utama footer, termasuk warna latar belakang, warna teks, font, dan padding. */
+#footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 40px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: default;
+}
+
+/* Bagian ini mengatur container utama footer agar fleksibel dan responsif. */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Setiap bagian footer mendapatkan ruang fleksibel dengan batas minimum tertentu agar tetap rapi. */
+.footer-section{
+    flex: 1;
+    min-width: 200px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+/* Judul di dalam setiap section diformat agar terlihat lebih menonjol dengan margin dan ukuran font yang sesuai. */
+.footer-section h3 {
+    color: var(--light-color);
+    margin-bottom: 20px;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Mengatur warna teks pada paragraf dan daftar agar sesuai dengan tema. */
+.footer-section p, ul li {
+    color: var(--light-color);
+}
+
+/* Bagian ini menambahkan garis bawah pada setiap judul footer untuk estetika tambahan. */
+.footer-section h3::after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 50px;
+    background-color: var(--secondary-color);
+}
+
+/* Kode ini memastikan daftar link dalam footer memiliki tampilan bersih dengan efek transisi warna saat dihover. */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: var(--light-color);
+    text-decoration: none;
+    transition: color 0.4s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Kode ini mengatur tampilan ikon media sosial agar seragam dan memiliki efek hover. */
+.social-links a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: var(--gray-color);
+    color: var(--light-color);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+}
+
+/* Menampilkan teks hak cipta di bagian bawah footer dengan desain yang bersih. */
+.copyright {
+    background-color: var(--footer-color);
+    color: #94a3b8;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+}
+
+/* Bagian ini mengatur tombol "Back to Top" agar hanya muncul saat diperlukan. */
+.back-to-top.show {
+    opacity: 1;
+}
+
+.back-to-top span {
+    font-size: 24px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Kode ini digunakan untuk efek animasi ketika elemen muncul saat pengguna menggulir halaman. */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* untuk membuat agar responsive saat di buka di tablet atau smartphone */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    /* Animasi untuk hamburger menjadi X */
+    .hamburger.active .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active .line2 {
+        opacity: 0;
+    }
+
+    .hamburger.active .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    .nav-link {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--light-color);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        clip-path: circle(0px at 100% 0);
+        transition: all 0.5s ease-out;
+        pointer-events: none;
+        box-shadow: 0 5px 10px var(--hamburger-shadow);
+    }
+
+    .nav-link.active {
+        clip-path: circle(1500px at 90% 10%);
+        pointer-events: all;
+    }
+
+    .nav-link li {
+        margin: 15px 0;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .footer-section {
+        flex-basis: 100%;
+    }
+}
+
+/* untuk membuat website responsive pada ukuran yang lebih kecil. */
+@media screen and (max-width: 480px){
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}

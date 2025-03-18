@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Diri</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="icon" href="Image/logo-title.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script type="module" src="js/scrip.js"></script> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- navigation bar -->
+            <nav>
+                <div class="logo">Iluzzy</div>
+                <ul class="nav-link">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">Tentang Saya</a></li>
+                    <li><a href="portofolio.html">Portofolio</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                    <!-- switch button ke dark mode -->
+                    <li class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" />
+                            <div class="slider"></div>
+                        </label>
+                        <span class="theme-icon" id="theme-icon">☀️</span>
+                    </li>
+                </ul>
+                <!-- hamburger menu apabila ukuran layar kecil -->
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <!-- contact section head -->
+        <section class="hero">
+            <div class="container">
+                <h1>Hubungi Kami</h1>
+                <p>Kami siap membantu Anda. Silakan hubungi kami melalui formulir di bawah ini atau kunjungi kantor kami.</p>
+            </div>
+        </section>
+        
+        <!-- main contact section -->
+        <section id="contact-section" class="section">
+            <div class="container">
+                <div class="contact-container reveal">
+                    <div class="contact-info">
+                        <h2>Informasi Kontak</h2>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>  
+                            </div>
+                            <div class="contact-text">
+                                <h3>Alamat</h3>
+                                <p>Jl. Kyai Abdul Jalal, jawa Tengah</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                              <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                              <h3>Telepon</h3>
+                              <p>+62 851 5643 0149</p>
+                              <p>+62 812 3456 7890</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                              <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                              <h3>Email</h3>
+                              <p>zidnolmenol@gmail.com</p>
+                              <p>l200230175@student.ums.ac.id</p>
+                            </div>
+                        </div>
+                          
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                              <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                              <h3>Jam Kerja</h3>
+                              <p>Senin - Jumat: 09:00 - 17:00</p>
+                              <p>Sabtu: 09:00 - 17:00</p>
+                              <p>Minggu & Hari Libur: Istirahat</p>
+                            </div>
+                        </div>
+                          
+                        <div class="social-links">
+                            <a href="https://github.com/Iluzzy14"><i class="fab fa-github"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+
+                    </div>
+                    <!-- form untuk pengguna mengirimkan pesan ke saya -->
+                    <div class="contact-form">
+                        <h2>Kirim Pesan</h2>
+                        <form id="contactForm" action="#" method="post">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap anda" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="Masukkan alamat email anda" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Nomer Telepon</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Masukkan nomer telephone anda" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subjek">Subjek</label>
+                                <input type="text" id="ssubjek" class="form-control" placeholder="Masukkan subjek anda" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="massage">Pesan</label>
+                                <textarea id="massage" name="massage" class="form-control" placeholder="Tuliskan pedan anda di sini..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn">Kirim Pesan</button>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- google maps -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.28837049799!2d106.7271962188189!3d-6.2295693696051295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%20Selatan%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1710383538954!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- back to top/tombol langsung ke atas -->
+    <div class="back-to-top">
+        <span>↑</span>
+    </div>
+
+    <!-- footer section -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Tentang Saya</h3>
+                <p>Saya adalah seorang Fullstack Developer yang memiliki keahlian dalam mengembangkan aplikasi dari sisi frontend hingga backend, dengan kemampuan mengintegrasikan berbagai teknologi untuk menciptakan solusi digital yang efisien dan user-friendly.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#">Pengembangan Web</a></li>
+                    <li><a href="#">Design UI/UX</a></li>
+                    <li><a href="#">Aplikasi Mobile</a></li>
+                    <li><a href="#">Konsultan IT</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navigasi</h3>
+                <ul>
+                    <li><a href="index.html#home">beranda</a></li>
+                    <li><a href="index.html#about">Tentang Saya</a></li>
+                    <li><a href="portofolio.html">Portofolio</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>    
+            </div>
+
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <ul>
+                  <li>Email: zidnolmenol@gmail.com</li>
+                  <li>Telepon: +62 851 5643 0149</li>
+                  <li>Alamat: Jl. Kyai Abdul Jalal, Jawa Tengah</li>
+                  <li><a href="contact.html">Hubungi Kami</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://github.com/Iluzzy14"><i class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Iluzzy Co. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
