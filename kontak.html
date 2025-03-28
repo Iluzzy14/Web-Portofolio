@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <script type="module" src="js/scrip.js"></script> 
 </head>
 <body>
     <header>
@@ -29,7 +28,9 @@
                             <input type="checkbox" id="checkbox" />
                             <div class="slider"></div>
                         </label>
-                        <span class="theme-icon" id="theme-icon">☀️</span>
+                        <label class="theme-icon" for="checkbox">
+                            <span id="sun-icon">☀️</span><span id="moon-icon">🌙</span>
+                        </label>
                     </li>
                 </ul>
                 <!-- hamburger menu apabila ukuran layar kecil -->
@@ -53,7 +54,7 @@
         <!-- main contact section -->
         <section id="contact-section" class="section">
             <div class="container">
-                <div class="contact-container reveal">
+                <div class="contact-container">
                     <div class="contact-info">
                         <h2>Informasi Kontak</h2>
 
@@ -151,11 +152,6 @@
             </div>
         </section>
     </main>
-
-    <!-- back to top/tombol langsung ke atas -->
-    <div class="back-to-top">
-        <span>↑</span>
-    </div>
 
     <!-- footer section -->
     <footer id="footer">
